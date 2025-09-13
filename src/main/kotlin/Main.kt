@@ -1,15 +1,11 @@
 fun main() {
-    println("Введите строку:")
-    val input = readLine() ?: ""
+    println("Введите натуральное число:")
+    val number = readLine()?.toIntOrNull()
 
-    val counts = mutableMapOf<Char, Int>()
-    for (ch in input) {
-        counts[ch] = (counts[ch] ?: 0) + 1
-    }
-
-    val sortedKeys = counts.keys.sorted()
-
-    for (key in sortedKeys) {
-        println("$key - ${counts[key]}")
+    if (number != null && number >= 0) {
+        val binary = number.toString(2)
+        println("В двоичной системе: $binary")
+    } else {
+        println("Ошибка ввода!")
     }
 }
