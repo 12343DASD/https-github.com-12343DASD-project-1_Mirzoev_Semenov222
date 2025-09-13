@@ -1,11 +1,18 @@
 fun main() {
-    println("Введите натуральное число:")
-    val number = readLine()?.toIntOrNull()
+    println("Введите строку:")
+    val input = readLine() ?: ""
 
-    if (number != null && number >= 0) {
-        val binary = number.toString(2)
-        println("В двоичной системе: $binary")
-    } else {
-        println("Ошибка ввода!")
+// Считаем количество вхождений каждого символа
+    val counts = mutableMapOf<Char, Int>()
+    for (ch in input) {
+        counts[ch] = (counts[ch] ?: 0) + 1
+    }
+
+// Сортируем символы по алфавиту
+    val sortedKeys = counts.keys.sorted()
+
+// Вывод результата
+    for (key in sortedKeys) {
+        println("$key - ${counts[key]}")
     }
 }
