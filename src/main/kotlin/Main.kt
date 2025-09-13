@@ -1,3 +1,4 @@
+import kotlin.math.pow
 fun main(args: Array<String>) {
     while (true){
         println("0 выход")
@@ -60,7 +61,7 @@ fun task2()
 {
     fun main() {
         println("Введите строку:")
-        val input = readLine() ?: ""
+        val input = readln() ?: ""
         val counts = mutableMapOf<Char, Int>()
         for (ch in input) {
             counts[ch] = (counts[ch] ?: 0) + 1
@@ -77,7 +78,7 @@ fun task3()
 {
     fun main() {
         println("Введите натуральное число:")
-        val number = readLine()?.toIntOrNull()
+        val number = readln()?.toIntOrNull()
 
         if (number != null && number >= 0) {
             val binary = number.toString(2)
@@ -88,11 +89,10 @@ fun task3()
     }
 }
 
-fun task4()
-{
+fun task4() {
     fun main() {
         println("Введите выражение (ЧИСЛО1 ЧИСЛО2 ОПЕРАЦИЯ):")
-        val input = readLine() ?: ""
+        val input = readln() ?: ""
         val parts = input.split(" ")
 
         if (parts.size == 3) {
@@ -120,29 +120,30 @@ fun task4()
 
 fun task5()
 {
-    fun main() {
-        println("Введите число n:")
-        val n = readLine()?.toIntOrNull() ?: return
-        println("Введите основание степени x:")
-        val x = readLine()?.toIntOrNull() ?: return
+    println("Введите число n:")
+    val n = readLine()?.toIntOrNull() ?: return
+    println("Введите основание степени x:")
+    val x = readLine()?.toIntOrNull() ?: return
 
-        var y = 0
-        var found = false
-        for (i in 0..30) {
-            if (x.toDouble().pow(i).toInt() == n) {
-                y = i
-                found = true
-                break
-            }
-        }
+    var y = 0
+    var found = false
 
-        if (found) {
-            println("Существует показатель: y = $y")
-        } else {
-            println("Целочисленный показатель не существует")
+    for (i in 0..30) {
+// Преобразуем i в Double, чтобы pow() работала
+        if (x.toDouble().pow(i.toDouble()).toInt() == n) {
+            y = i
+            found = true
+            break
         }
     }
+
+    if (found) {
+        println("Существует показатель: y = $y")
+    } else {
+        println("Целочисленный показатель не существует")
+    }
 }
+
 
 fun task6()
 {
