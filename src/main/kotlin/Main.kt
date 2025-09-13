@@ -29,7 +29,7 @@ fun task1()
 {
     fun main() {
         println("Введите строку:")
-        val input = readLine() ?: ""
+        val input = readln() ?: ""
 
         if (input.isEmpty()) {
             println("Пустая строка")
