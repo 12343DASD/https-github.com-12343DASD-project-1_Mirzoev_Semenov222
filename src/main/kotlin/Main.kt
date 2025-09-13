@@ -1,7 +1,15 @@
-fun main(args: Array<String>) {
-    println("Hello World!")
+fun main() {
+    println("Введите строку:")
+    val input = readLine() ?: ""
 
-    // Try adding program arguments via Run/Debug configuration.
-    // Learn more about running applications: https://www.jetbrains.com/help/idea/running-applications.html.
-    println("Program arguments: ${args.joinToString()}")
+    val counts = mutableMapOf<Char, Int>()
+    for (ch in input) {
+        counts[ch] = (counts[ch] ?: 0) + 1
+    }
+
+    val sortedKeys = counts.keys.sorted()
+
+    for (key in sortedKeys) {
+        println("$key - ${counts[key]}")
+    }
 }
